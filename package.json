@@ -1,0 +1,43 @@
+{
+  "name": "reviews-component",
+  "version": "1.0.0",
+  "description": "reviews module for an airbnb single pageview",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JCBK-airbnb/reviews-component.git"
+  },
+  "author": "JosefBerthoud",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/JCBK-airbnb/reviews-component/issues"
+  },
+  "homepage": "https://github.com/JCBK-airbnb/reviews-component#readme",
+  "dependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^3.0.0",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.6.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "style-loader": "^0.23.1",
+    "underscore": "^1.9.1",
+    "webpack": "^4.35.2"
+  },
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.8.0",
+    "webpack-cli": "^3.3.5"
+  }
+}
