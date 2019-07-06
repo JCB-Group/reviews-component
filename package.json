@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon ./server/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.15.1",
+    "express": "^4.17.1",
     "jest": "^24.8.0",
     "node": "^11.11.0",
     "react": "^16.8.6",
