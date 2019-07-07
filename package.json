@@ -17,7 +17,9 @@
     "url": "https://github.com/JCBK-airbnb/reviews-component/issues"
   },
   "homepage": "https://github.com/JCBK-airbnb/reviews-component#readme",
-  "dependencies": {},
+  "dependencies": {
+    "faker": "^4.1.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
@@ -32,6 +34,9 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.15.1",
     "jest": "^24.8.0",
+    "mongoose": "^5.6.3",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-type-url": "^1.0.6",
     "node": "^11.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
