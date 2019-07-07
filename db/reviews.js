@@ -1,4 +1,3 @@
-//define schema and create DB
 
 const mongoose = require('mongoose');
 const db = require('./index.js');

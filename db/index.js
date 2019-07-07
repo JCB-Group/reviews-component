@@ -1,4 +1,3 @@
-// make connection to server from db
 
 const mongoose = require('mongoose');
 
