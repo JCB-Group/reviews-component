@@ -1,5 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Search from './Search.jsx';
+import ReviewList from './ReviewList.jsx';
+import Aggregates from './Aggregates.jsx';
+import sampleData from '../../sampleData.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,17 +10,19 @@ class App extends React.Component {
 
     this.state = {
       searching: false,
-      data: [],
+      data: sampleData,
       page: 0,
     };
   }
   render() {
+    let { data, page } = this.state;
     return (
       <div>
         <div>{/* bar across top of page*/}</div>
-        <div>search + review avg</div>
+        <div>< Search /></div>
         <div>{/* bar under search + review avg */}</div>
-        <div>reviewList</div>
+        <div>< Aggregates /></div>
+        <div>< ReviewList reviews={data}/></div>
         <div>pagination</div>
       </div>
     )
