@@ -15,7 +15,7 @@ class Search extends React.Component {
       <div>
         <form>
           <label>
-            <input type="text" value={this.state.value} onChange="empty"/>
+            <input type="text" />
           </label>
           <input type="submit"/>
         </form>

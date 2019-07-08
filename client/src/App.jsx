@@ -3,13 +3,14 @@ import Search from './Search.jsx';
 import ReviewList from './ReviewList.jsx';
 import Aggregates from './Aggregates.jsx';
 import sampleData from '../../sampleData.js';
+import SearchInfo from './SearchInfo.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      searching: false,
+      searching: true,
       searchString: '',
       data: sampleData,
       page: 0,
@@ -47,13 +48,15 @@ class App extends React.Component {
   }
 
   render() {
-    let { data, page } = this.state;
+    const { data, page, searching } = this.state;
+    //if searching render searchinfo component
+    //if not searching render aggregates
     return (
       <div>
         <div>{/* bar across top of page*/}</div>
         <div>< Search /></div>
         <div>{/* bar under search + review avg */}</div>
-        <div>< Aggregates /></div>
+        <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
         <div>< ReviewList reviews={data}/></div>
         <div>pagination</div>
       </div>
