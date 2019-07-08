@@ -8,10 +8,17 @@ class Search extends React.Component {
       value: '',
     };
   }
+
+
   render() {
     return (
       <div>
-        <div>hi i'm going to be a search bar</div>
+        <form>
+          <label>
+            <input type="text" value={this.state.value} onChange="empty"/>
+          </label>
+          <input type="submit"/>
+        </form>
       </div>
     )
   }
