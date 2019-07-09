@@ -4,6 +4,7 @@ import ReviewList from './ReviewList.jsx';
 import Aggregates from './Aggregates.jsx';
 import sampleData from '../../sampleData.js';
 import SearchInfo from './SearchInfo.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,17 @@ class App extends React.Component {
     this.searchDataForString = this.searchDataForString.bind(this);
   }
   
+  componentDidMount() {
+    axios.get('/reviews').then((response) => {
+      this.setState({
+        data: response.data,
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  };
+
   componentDidUpdate() {
     let { searchString, searching } = this.state;
     if (searchString !== '' && searching === true) {
@@ -42,9 +54,6 @@ class App extends React.Component {
   searchDataForString() {
     let { data, searchString } = this.state;
     let matchingReviews = [];
-    // if (searchString === '') {
-    //   matchingReviews = sampleData;
-    // }
     for (let i = 0; i < data.length; i++) {
       let textStringsArray = data[i].textBody.split(' ');
       for (let word of textStringsArray) {
