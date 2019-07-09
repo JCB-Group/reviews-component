@@ -31,15 +31,20 @@ class App extends React.Component {
     e.preventDefault();
     let newSearchString = e.target.getAttribute("value");
     let { searching } = this.state;
-    this.setState({
-      searching: !searching,
-      searchString: newSearchString,
-    });
+    if (newSearchString !== '') {
+      this.setState({
+        searching: !searching,
+        searchString: newSearchString,
+      });
+    }
   };
 
   searchDataForString() {
     let { data, searchString } = this.state;
     let matchingReviews = [];
+    // if (searchString === '') {
+    //   matchingReviews = sampleData;
+    // }
     for (let i = 0; i < data.length; i++) {
       let textStringsArray = data[i].textBody.split(' ');
       for (let word of textStringsArray) {
