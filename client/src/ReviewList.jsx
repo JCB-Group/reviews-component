@@ -12,7 +12,10 @@ const Reviewlist = (props) => {
     <div>
       <div>
         {reviews.map((review, index) =>
-          < ReviewListEntry review={review}/>
+          < ReviewListEntry 
+            review={review}
+            key={index}
+          />
         )}
       </div>
     </div>
