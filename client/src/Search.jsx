@@ -7,17 +7,27 @@ class Search extends React.Component {
     this.state = {
       value: '',
     };
+    this.onChangeHandler = this.onChangeHandler.bind(this);
   }
-
+  //what functions do i want this to call and when
+  //we want to pass the state up to app
+  //when app's searchString state changes/search toggles, it handles its own stuff
+  onChangeHandler(event) {
+    this.setState({
+      value: event.target.value,
+    });
+  };
 
   render() {
+    const { search } = this.props;
+    const { value } = this.state;
     return (
       <div>
-        <form>
+        <form onSubmit={search} value={value}>
           <label>
-            <input type="text" />
+            <input type="text" value={value} onChange={this.onChangeHandler}/>
           </label>
-          <input type="submit"/>
+          <input type="submit" value="Search Reviews"/>
         </form>
       </div>
     )

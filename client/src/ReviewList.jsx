@@ -10,13 +10,11 @@ const Reviewlist = (props) => {
   let { reviews } = props;
   return (
     <div>
-      <div> < ReviewListEntry review={reviews[0]} /> </div>
-      <div> < ReviewListEntry review={reviews[1]} /> </div>
-      <div> < ReviewListEntry review={reviews[2]} /> </div>
-      <div> < ReviewListEntry review={reviews[3]} /> </div>
-      <div> < ReviewListEntry review={reviews[4]} /> </div>
-      <div> < ReviewListEntry review={reviews[5]} /> </div>
-      <div> < ReviewListEntry review={reviews[6]} /> </div>
+      <div>
+        {reviews.map((review, index) =>
+          < ReviewListEntry review={review}/>
+        )}
+      </div>
     </div>
   )
 };
