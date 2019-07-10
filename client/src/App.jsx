@@ -4,7 +4,7 @@ import ReviewList from './ReviewList.jsx';
 import Aggregates from './Aggregates.jsx';
 import SearchInfo from './SearchInfo.jsx';
 import axios from 'axios';
-import { paginateData } from './dataHelpers.js';
+import { paginateData, checkPageAmount } from './dataHelpers.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class App extends React.Component {
       searchString: '',
       data: [[]],
       pageNumber: 0,
+      numberOfPages: 0,
       reviewsMatchingString: 0,
     };
     this.toggleSearch = this.toggleSearch.bind(this);
@@ -25,6 +26,7 @@ class App extends React.Component {
     axios.get('/reviews').then((response) => {
       this.setState({
         data: paginateData(response.data),
+        numberOfPages: checkPageAmount(response.data),
       })
     })
     .catch((err) => {
@@ -72,7 +74,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { data, pageNumber, searching } = this.state;
+    const { data, pageNumber, searching, numberOfPages } = this.state;
     return (
       <div>
         <div>{/* bar across top of page*/}</div>
