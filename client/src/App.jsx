@@ -2,9 +2,9 @@ import React from 'react';
 import Search from './Search.jsx';
 import ReviewList from './ReviewList.jsx';
 import Aggregates from './Aggregates.jsx';
-import sampleData from '../../sampleData.js';
 import SearchInfo from './SearchInfo.jsx';
 import axios from 'axios';
+import { paginateData } from './dataHelpers.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,8 +13,9 @@ class App extends React.Component {
     this.state = {
       searching: false,
       searchString: '',
-      data: sampleData,
-      page: 0,
+      data: [[]],
+      pageNumber: 0,
+      reviewsMatchingString: 0,
     };
     this.toggleSearch = this.toggleSearch.bind(this);
     this.searchDataForString = this.searchDataForString.bind(this);
@@ -23,7 +24,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/reviews').then((response) => {
       this.setState({
-        data: response.data,
+        data: paginateData(response.data),
       })
     })
     .catch((err) => {
@@ -54,29 +55,31 @@ class App extends React.Component {
   searchDataForString() {
     let { data, searchString } = this.state;
     let matchingReviews = [];
-    for (let i = 0; i < data.length; i++) {
-      let textStringsArray = data[i].textBody.split(' ');
-      for (let word of textStringsArray) {
-        if (word.toLowerCase() === searchString.toLowerCase()) {
-          matchingReviews.push(data[i]);
+    for (let page = 0; page < data.length; page++) {
+      for (let entry = 0; entry < page.length; entry++) {
+        let textStringsArray = data[page][entry].textBody.split(' ');
+        for (let word of textStringsArray) {
+          if (word.toLowerCase() === searchString.toLowerCase()) {
+            matchingReviews.push(data[page][entry]);
+          }
         }
       }
     }
     this.setState({
-      data: matchingReviews,
+      data: paginateData(matchingReviews),
       searchString: '',
     });
   }
 
   render() {
-    const { data, page, searching } = this.state;
+    const { data, pageNumber, searching } = this.state;
     return (
       <div>
         <div>{/* bar across top of page*/}</div>
         <div>< Search search={this.toggleSearch}/></div>
         <div>{/* bar under search + review avg */}</div>
         <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
-        <div>< ReviewList reviews={data}/></div>
+        <div>< ReviewList reviews={data[pageNumber]}/></div>
         <div>pagination</div>
       </div>
     )
