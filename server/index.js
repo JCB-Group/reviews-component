@@ -18,7 +18,21 @@ app.get('/reviews', (req, res) => {
       console.log(err);
       res.send();
     } else {
-      console.log('success');
+      console.log('successfully got initial page');
+      res.send(results);
+    }
+  });
+});
+
+app.post('/search', (req, res) => {
+  console.log(req.body.searchString);
+  console.log('we received a post request to search');
+  models.search(req.body.searchString, (err, results) => {
+    if (err) {
+      console.log(err);
+      res.send();
+    } else {
+      console.log('successfully searched');
       res.send(results);
     }
   });
