@@ -12,10 +12,10 @@ class PageCarousel extends React.Component {
     super(props);
 
     this.state = {};
-    this.determineNumberOfDivs = this.determineNumberOfDivs.bind(this);
+    this.getNumberOfDivs = this.getNumberOfDivs.bind(this);
   }
 
-  determineNumberOfDivs() {
+  getNumberOfDivs() {
     let { page, numberOfPages } = this.props;
     if (numberOfPages >= 9) {
       //each of the below will build an array and return it
@@ -45,6 +45,7 @@ class PageCarousel extends React.Component {
     }
   }
 
+  //render will call getNumberOfDivs and map across that area, passing in prop types and values as needed
   render() {
     let { page, numberOfPages } = this.props;
     return (
