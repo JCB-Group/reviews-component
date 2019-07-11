@@ -23,7 +23,7 @@ describe('App', () => {
 
 describe('ReviewList', () => {
   it('should exist', () => {
-    const component = shallow(<ReviewList />);
+    const component = shallow(<ReviewList reviews={[]}/>);
     expect(component.exists()).toBe(true);
   });
 });
@@ -51,7 +51,7 @@ describe('Aggregates', () => {
 
 describe('ReviewListEntry', () => {
   it('should exist', () => {
-    const component = shallow(<ReviewListEntry />);
+    const component = shallow(<ReviewListEntry review={{}}/>);
     expect(component.exists()).toBe(true);
   });
 });

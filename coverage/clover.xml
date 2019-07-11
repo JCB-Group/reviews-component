@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1562886048683" clover="3.2.0">
-  <project timestamp="1562886048683" name="All files">
+<coverage generated="1562886844828" clover="3.2.0">
+  <project timestamp="1562886844828" name="All files">
     <metrics statements="62" coveredstatements="38" conditionals="12" coveredconditionals="3" methods="27" coveredmethods="13" elements="101" coveredelements="54" complexity="0" loc="62" ncloc="62" packages="1" files="10" classes="10"/>
     <file name="Aggregates.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/Aggregates.jsx">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
