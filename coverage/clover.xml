@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1562886048683" clover="3.2.0">
+  <project timestamp="1562886048683" name="All files">
+    <metrics statements="62" coveredstatements="38" conditionals="12" coveredconditionals="3" methods="27" coveredmethods="13" elements="101" coveredelements="54" complexity="0" loc="62" ncloc="62" packages="1" files="10" classes="10"/>
+    <file name="Aggregates.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/Aggregates.jsx">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+    </file>
+    <file name="App.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/App.jsx">
+      <metrics statements="28" coveredstatements="8" conditionals="8" coveredconditionals="1" methods="13" coveredmethods="2"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="26" count="0" type="stmt"/>
+      <line num="27" count="0" type="stmt"/>
+      <line num="33" count="0" type="stmt"/>
+      <line num="38" count="0" type="stmt"/>
+      <line num="39" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="40" count="0" type="stmt"/>
+      <line num="45" count="0" type="stmt"/>
+      <line num="46" count="0" type="stmt"/>
+      <line num="47" count="0" type="stmt"/>
+      <line num="55" count="0" type="stmt"/>
+      <line num="62" count="0" type="stmt"/>
+      <line num="67" count="0" type="stmt"/>
+      <line num="68" count="0" type="stmt"/>
+      <line num="69" count="0" type="stmt"/>
+      <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="71" count="0" type="stmt"/>
+      <line num="82" count="0" type="stmt"/>
+      <line num="83" count="0" type="stmt"/>
+      <line num="91" count="0" type="stmt"/>
+      <line num="98" count="0" type="stmt"/>
+      <line num="103" count="1" type="stmt"/>
+      <line num="104" count="1" type="stmt"/>
+      <line num="105" count="1" type="stmt"/>
+    </file>
+    <file name="LeftArrow.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/LeftArrow.jsx">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+    </file>
+    <file name="PageCarousel.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/PageCarousel.jsx">
+      <metrics statements="6" coveredstatements="5" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="23" count="1" type="cond" truecount="2" falsecount="2"/>
+      <line num="24" count="0" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
+    </file>
+    <file name="ReviewList.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/ReviewList.jsx">
+      <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="15" count="0" type="stmt"/>
+    </file>
+    <file name="ReviewListEntry.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/ReviewListEntry.jsx">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+    </file>
+    <file name="RightArrow.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/RightArrow.jsx">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+    </file>
+    <file name="Search.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/Search.jsx">
+      <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="16" count="0" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
+      <line num="24" count="1" type="stmt"/>
+    </file>
+    <file name="SearchInfo.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/SearchInfo.jsx">
+      <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="0" type="stmt"/>
+    </file>
+    <file name="SmartDiv.jsx" path="/Users/josefberthoud/Desktop/FEC-2/reviews-component/client/src/components/SmartDiv.jsx">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
