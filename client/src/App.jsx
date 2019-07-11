@@ -44,6 +44,24 @@ class App extends React.Component {
   
   changePage(e) {
     console.log(e.target.getAttribute("value"));
+    let pageNum = e.target.getAttribute("value");
+    axios({
+      method: 'POST',
+      url: '/reviews',
+      data: {
+        pageNumber: pageNum
+      }
+    })
+    .then((response) => {
+      this.setState({
+        data: response.data[1],
+        numberOfPages: response.data[0],
+        pageNumber: pageNum
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   };
   
   toggleSearch(e) {

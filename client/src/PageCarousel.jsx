@@ -24,16 +24,17 @@ class PageCarousel extends React.Component {
       return (
         <div>
           { < LeftArrow value={page} changePage={changePage}/>}
-          { < SmartDiv value={page - 1} changePage={changePage}/> }
+          { < SmartDiv value={Number(page) - 1} changePage={changePage}/> }
           { < SmartDiv value={page} changePage={changePage}/> }
-          { < SmartDiv value={page + 1} changePage={changePage}/> }
+          { < SmartDiv value={Number(page) + 1} changePage={changePage}/> }
           { < RightArrow value={page} changePage={changePage}/> }
         </div>
       )
     } else {
       return (
         <div>
-          { < SmartDiv value={1} /> }
+          { < SmartDiv value={page} changePage={changePage}/> }
+          { < RightArrow value={page} changePage={changePage}/>}
         </div>
       )
     }
