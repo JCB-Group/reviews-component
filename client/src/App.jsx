@@ -3,6 +3,7 @@ import Search from './Search.jsx';
 import ReviewList from './ReviewList.jsx';
 import Aggregates from './Aggregates.jsx';
 import SearchInfo from './SearchInfo.jsx';
+import PageCarousel from './PageCarousel.jsx';
 import axios from 'axios';
 // import { paginateData, checkPageAmount } from './dataHelpers.js';
 
@@ -86,7 +87,7 @@ class App extends React.Component {
         <div>{/* bar under search + review avg */}</div>
         <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
         <div>< ReviewList reviews={data}/></div>
-        <div>pagination</div>
+        <div> < PageCarousel page={pageNumber} numberOfPages={numberOfPages}/></div>
       </div>
     )
   }
