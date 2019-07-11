@@ -5,24 +5,16 @@ class SmartDiv extends React.Component {
     super(props);
 
     this.state = {
-      directive: "...",
+      value: "...",
     };
   }
 
   
 
   render() {
-    let { directive } = this.props;
-    console.log(typeof directive);
-    if (typeof directive === 'number') {
-      directive += 1;
-    } else if (directive === "void") {
-      directive = "...";
-    } else if (directive === "next") {
-      directive = ">";
-    }
+    let { value, changePage } = this.props;
     return (
-      <span>  {directive}</span>
+      <span value={value} onClick={changePage}>  {value}</span>
     )
   }
 };

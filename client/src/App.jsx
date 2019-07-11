@@ -15,11 +15,12 @@ class App extends React.Component {
       searching: false,
       searchString: '',
       data: [],
-      pageNumber: 0,
+      pageNumber: 5,
       numberOfPages: 0,
     };
     this.toggleSearch = this.toggleSearch.bind(this);
     this.searchDataForString = this.searchDataForString.bind(this);
+    this.changePage = this.changePage.bind(this);
   }
   
   componentDidMount() {
@@ -41,6 +42,9 @@ class App extends React.Component {
     }
   };
   
+  changePage(e) {
+    console.log(e.target.getAttribute("value"));
+  };
   
   toggleSearch(e) {
     e.preventDefault();
@@ -80,14 +84,20 @@ class App extends React.Component {
 
   render() {
     const { data, pageNumber, searching, numberOfPages } = this.state;
+    const { changePage, toggleSearch } = this;
     return (
       <div>
         <div>{/* bar across top of page*/}</div>
-        <div>< Search search={this.toggleSearch}/></div>
+        <div>< Search search={toggleSearch}/></div>
         <div>{/* bar under search + review avg */}</div>
         <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
         <div>< ReviewList reviews={data}/></div>
-        <div> < PageCarousel page={pageNumber} numberOfPages={numberOfPages}/></div>
+        <div> 
+          < PageCarousel 
+            page={pageNumber}
+            numberOfPages={numberOfPages}
+            changePage={changePage}
+          /></div>
       </div>
     )
   }
