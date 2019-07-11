@@ -5,7 +5,6 @@ import Aggregates from './Aggregates.jsx';
 import SearchInfo from './SearchInfo.jsx';
 import PageCarousel from './PageCarousel.jsx';
 import axios from 'axios';
-// import { paginateData, checkPageAmount } from './dataHelpers.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +14,7 @@ class App extends React.Component {
       searching: false,
       searchString: '',
       data: [],
-      pageNumber: 5,
+      pageNumber: 0,
       numberOfPages: 0,
     };
     this.toggleSearch = this.toggleSearch.bind(this);
