@@ -170,17 +170,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 /***/ }),
 
-/***/ "./client/src/dataHelpers.js":
-/*!***********************************!*\
-  !*** ./client/src/dataHelpers.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("var checkPageAmount = function checkPageAmount(data) {\n  var numberOfPages = Math.ceil(data.length / 7);\n  return numberOfPages;\n};\n\nvar paginateData = function paginateData(data) {\n  var pages = [];\n  var counter = 0;\n  var numberOfPages = checkPageAmount(data);\n  console.log('we will have ' + numberOfPages + 'pages!');\n\n  for (var i = 0; i < numberOfPages; i++) {\n    var page = [];\n\n    for (var c = 0; c < 7; c++) {\n      if (counter < data.length) {\n        page.push(data[i * 7 + c]);\n        counter += 1;\n      }\n    }\n\n    pages.push(page);\n  }\n\n  return pages;\n};\n\nmodule.exports.paginateData = paginateData;\nmodule.exports.checkPageAmount = checkPageAmount;\n\n//# sourceURL=webpack:///./client/src/dataHelpers.js?");
-
-/***/ }),
-
 /***/ "./client/src/index.js":
 /*!*****************************!*\
   !*** ./client/src/index.js ***!

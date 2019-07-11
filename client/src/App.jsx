@@ -5,7 +5,7 @@ import Aggregates from './Aggregates.jsx';
 import SearchInfo from './SearchInfo.jsx';
 import PageCarousel from './PageCarousel.jsx';
 import axios from 'axios';
-import { paginateData, checkPageAmount } from './dataHelpers.js';
+// import { paginateData, checkPageAmount } from './dataHelpers.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,10 +14,9 @@ class App extends React.Component {
     this.state = {
       searching: false,
       searchString: '',
-      data: [[]],
+      data: [],
       pageNumber: 0,
       numberOfPages: 0,
-      reviewsMatchingString: 0,
     };
     this.toggleSearch = this.toggleSearch.bind(this);
     this.searchDataForString = this.searchDataForString.bind(this);
@@ -26,8 +25,8 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/reviews').then((response) => {
       this.setState({
-        data: paginateData(response.data),
-        numberOfPages: checkPageAmount(response.data),
+        data: response.data[1],
+        numberOfPages: response.data[0],
       })
     })
     .catch((err) => {
@@ -53,26 +52,31 @@ class App extends React.Component {
         searchString: newSearchString,
       });
     }
+    //if searchString is empty, dont switch to searching but do 
+    //return data state to be the first pageof the paginated data
+    //from the db
   };
 
   searchDataForString() {
-    let { data, searchString } = this.state;
-    let matchingReviews = [];
-    for (let page = 0; page < data.length; page++) {
-      for (let entry = 0; entry < page.length; entry++) {
-        let textStringsArray = data[page][entry].textBody.split(' ');
-        for (let word of textStringsArray) {
-          if (word.toLowerCase() === searchString.toLowerCase()) {
-            matchingReviews.push(data[page][entry]);
-          }
-        }
+    let { searchString } = this.state;
+    axios({
+      method: 'POST',
+      url: '/search',
+      data: {
+        searchString: searchString
       }
-    }
-    this.setState({
-      data: paginateData(matchingReviews),
-      searchString: '',
-    });
-  }
+    })
+    .then((response) => {
+      this.setState({
+        data: response.data[1],
+        numberOfPages: response.data[0],
+        searchString: ''
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  };
 
   render() {
     const { data, pageNumber, searching, numberOfPages } = this.state;
@@ -82,7 +86,7 @@ class App extends React.Component {
         <div>< Search search={this.toggleSearch}/></div>
         <div>{/* bar under search + review avg */}</div>
         <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
-        <div>< ReviewList reviews={data[pageNumber]}/></div>
+        <div>< ReviewList reviews={data}/></div>
         <div> < PageCarousel page={pageNumber} numberOfPages={numberOfPages}/></div>
       </div>
     )
