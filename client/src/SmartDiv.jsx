@@ -9,6 +9,8 @@ class SmartDiv extends React.Component {
     };
   }
 
+  
+
   render() {
     let { directive } = this.props;
     console.log(typeof directive);
