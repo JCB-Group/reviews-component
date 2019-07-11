@@ -24,6 +24,18 @@ app.get('/reviews', (req, res) => {
   });
 });
 
+app.post('/reviews', (req, res) => {
+  models.find((err, results) => {
+    if (err) {
+      console.log(err);
+      res.send();
+    } else {
+      console.log('attempting to get new page');
+      res.send(results);
+    }
+  }, req.body.pageNumber);
+});
+
 app.post('/search', (req, res) => {
   console.log(req.body.searchString);
   console.log('we received a post request to search');
