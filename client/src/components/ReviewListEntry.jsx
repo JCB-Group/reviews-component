@@ -6,6 +6,7 @@ import {
   EntryInfoContainer,
   EntryName,
   EntryDate,
+  EntryBody,
 } from './styleComponents.jsx';
 //once using actual data, conditionally map inside of render child comments
 //clarify if child comments render all children at once or similarly have a cutoff
@@ -43,9 +44,9 @@ const ReviewListEntry = (props) => {
           <div>
             <div>
               <div>
-                <div>
+                <EntryBody>
                   {textBody}
-                </div>
+                </EntryBody>
               </div>
             </div>
           </div>

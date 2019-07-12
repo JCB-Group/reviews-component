@@ -17,7 +17,8 @@ const CarouselButton = styled.li`
 const LineDiv = styled.div`
   border-bottom: 1px solid black;
   color: #484848;
-  margin-bottom: 14px;
+  margin-top: 24px;
+  margin-bottom: 24px;
 `
 const ReviewPhoto = styled.img`
   height: 48px;
@@ -41,6 +42,11 @@ const EntryDate = styled.div`
   font-weight: 400;
   line-height: 1.2857142857142858em;
 `
+const EntryBody = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.375em;
+`
 export { 
   Shared,
   CarouselButton,
@@ -51,4 +57,5 @@ export {
   EntryInfoContainer,
   EntryName,
   EntryDate,
+  EntryBody
 };
