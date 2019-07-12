@@ -3,13 +3,16 @@ import {
   LineDiv,
   ReviewPhoto,
   FlexContainer,
+  EntryInfoContainer,
+  EntryName,
+  EntryDate,
 } from './styleComponents.jsx';
 //once using actual data, conditionally map inside of render child comments
 //clarify if child comments render all children at once or similarly have a cutoff
 
 const ReviewListEntry = (props) => {
   let { review } = props;
-  let { avatar, userName, textBody } = review;
+  let { avatar, userName, textBody, datePosted } = review;
   return (  
     <div>
       <div>
@@ -26,11 +29,26 @@ const ReviewListEntry = (props) => {
                 </a>
               </div>
             </div>
-            <div>
-              {userName}
-            </div>
+            <EntryInfoContainer>
+              <EntryName>
+                {userName}
+              </EntryName>
+              <EntryDate>
+                <span>
+                  {datePosted}
+                </span>
+              </EntryDate>
+            </EntryInfoContainer>
           </FlexContainer>
-          <div>{textBody}</div>
+          <div>
+            <div>
+              <div>
+                <div>
+                  {textBody}
+                </div>
+              </div>
+            </div>
+          </div>
           < LineDiv />
         </div>
       </div>
