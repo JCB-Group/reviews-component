@@ -10,9 +10,7 @@ class Search extends React.Component {
     };
     this.onChangeHandler = this.onChangeHandler.bind(this);
   }
-  //what functions do i want this to call and when
-  //we want to pass the state up to app
-  //when app's searchString state changes/search toggles, it handles its own stuff
+  
   onChangeHandler(event) {
     this.setState({
       value: event.target.value,
