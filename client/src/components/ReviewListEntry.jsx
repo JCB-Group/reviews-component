@@ -1,13 +1,58 @@
 import React from 'react';
-
+import { 
+  LineDiv,
+  ReviewPhoto,
+  FlexContainer,
+  EntryInfoContainer,
+  EntryName,
+  EntryDate,
+  EntryBody,
+} from './styleComponents.jsx';
 //once using actual data, conditionally map inside of render child comments
 //clarify if child comments render all children at once or similarly have a cutoff
+
 const ReviewListEntry = (props) => {
   let { review } = props;
+  let { avatar, userName, textBody, datePosted } = review;
   return (  
     <div>
-      <div>{review.userName}</div>
-      <p>{review.textBody}</p>
+      <div>
+        <div>
+          <FlexContainer>
+            <div>
+              <div>
+                <a>
+                  <div>
+                    <div>
+                      <ReviewPhoto src={avatar}/>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <EntryInfoContainer>
+              <EntryName>
+                {userName}
+              </EntryName>
+              <EntryDate>
+                <span>
+                  {datePosted}
+                </span>
+              </EntryDate>
+            </EntryInfoContainer>
+          </FlexContainer>
+          <div>
+            <div>
+              <div>
+                <EntryBody>
+                  {textBody}
+                </EntryBody>
+              </div>
+            </div>
+          </div>
+          < LineDiv />
+        </div>
+      </div>
     </div>
   )
 };

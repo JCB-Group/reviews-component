@@ -2,6 +2,8 @@ import React from 'react';
 import SmartDiv from './SmartDiv.jsx';
 import LeftArrow from './LeftArrow.jsx';
 import RightArrow from './RightArrow.jsx';
+import Leftsvg from './LeftSvg.jsx';
+import LeftSvg from './LeftSvg.jsx';
 
 //this component needs to render between 6 and 9 divs in a carousel below reviews list, depending on review data
 //at any given time, between 1 and 2 of those divs will be uninteractable "..." divs
@@ -22,20 +24,21 @@ class PageCarousel extends React.Component {
     let { page, numberOfPages, changePage } = this.props;
     if (numberOfPages >= 3 && page >= 2) {
       return (
-        <div>
+        <ul>
+          {/* <LeftSvg /> */}
           { < LeftArrow value={page} changePage={changePage}/>}
           { < SmartDiv value={Number(page) - 1} changePage={changePage}/> }
           { < SmartDiv value={page} changePage={changePage}/> }
           { < SmartDiv value={Number(page) + 1} changePage={changePage}/> }
           { < RightArrow value={page} changePage={changePage}/> }
-        </div>
+        </ul>
       )
     } else {
       return (
-        <div>
+        <ul>
           { < SmartDiv value={page} changePage={changePage}/> }
           { < RightArrow value={page} changePage={changePage}/>}
-        </div>
+        </ul>
       )
     }
   }

@@ -4,6 +4,8 @@ import ReviewList from './ReviewList.jsx';
 import Aggregates from './Aggregates.jsx';
 import SearchInfo from './SearchInfo.jsx';
 import PageCarousel from './PageCarousel.jsx';
+import styled from 'styled-components';
+import { Shared, CarouselButton, LineDiv } from './styleComponents.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -66,16 +68,24 @@ class App extends React.Component {
   toggleSearch(e) {
     e.preventDefault();
     let newSearchString = e.target.getAttribute("value");
-    let { searching } = this.state;
+    let { searching, searchString } = this.state;
     if (newSearchString !== '') {
       this.setState({
         searching: !searching,
         searchString: newSearchString,
       });
-    }
-    //if searchString is empty, dont switch to searching but do 
-    //return data state to be the first pageof the paginated data
-    //from the db
+    } else if (searching === true && searchString === '') {
+      axios.get('/reviews').then((response) => {
+        this.setState({
+          data: response.data[1],
+          numberOfPages: response.data[0],
+          searching: false,
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }``
   };
 
   searchDataForString() {
@@ -88,6 +98,7 @@ class App extends React.Component {
       }
     })
     .then((response) => {
+      console.log(response);
       this.setState({
         data: response.data[1],
         numberOfPages: response.data[0],
@@ -103,19 +114,24 @@ class App extends React.Component {
     const { data, pageNumber, searching, numberOfPages } = this.state;
     const { changePage, toggleSearch } = this;
     return (
-      <div>
-        <div>{/* bar across top of page*/}</div>
-        <div>< Search search={toggleSearch}/></div>
-        <div>{/* bar under search + review avg */}</div>
-        <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
-        <div>< ReviewList reviews={data}/></div>
-        <div> 
-          < PageCarousel 
-            page={pageNumber}
-            numberOfPages={numberOfPages}
-            changePage={changePage}
-          /></div>
-      </div>
+      <Shared> 
+        <div>
+          <div>< Search search={toggleSearch}/></div>
+          <div>< LineDiv/></div>
+          <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
+          <div>< ReviewList reviews={data}/></div>
+          <div>
+            { data.length > 0 ?
+              < PageCarousel 
+              page={pageNumber}
+              numberOfPages={numberOfPages}
+              changePage={changePage}
+            />
+            : null
+            }
+          </div> 
+        </div>
+      </Shared> 
     )
   }
 }
