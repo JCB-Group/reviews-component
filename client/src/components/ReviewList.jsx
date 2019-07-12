@@ -10,7 +10,7 @@ const Reviewlist = (props) => {
         {reviews.map((review, index) =>
           < ReviewListEntry 
             review={review}
-            key={index}
+            key={review._id}
           />
         )}
       </div>
