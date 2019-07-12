@@ -27,7 +27,7 @@ const search = (query, callback) => {
     } else {
       let returnData = [];
       for (let i = 0; i < docs.length; i++) {
-        let words = docs[i].textBody.split('');
+        let words = docs[i].textBody.split(' ');
         for (let word = 0; word < words.length; word++) {
           if (words[word] === query) {
             returnData.push(docs[i]);
@@ -35,6 +35,7 @@ const search = (query, callback) => {
           }
         }
       }
+      console.log(returnData);
       callback(null, paginateData(returnData, 0));
     }
   });
@@ -45,6 +46,10 @@ const search = (query, callback) => {
 //as a request for a specific page
 const paginateData = (rawData, pageRequested) => {
   console.log(pageRequested);
+  console.log(rawData);
+  if (rawData.length === 0) {
+    return [0, []];
+  }
   let numberOfPages = Math.ceil((rawData.length / 7));
   let pages = [];
   let counter = 0;

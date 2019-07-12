@@ -66,16 +66,24 @@ class App extends React.Component {
   toggleSearch(e) {
     e.preventDefault();
     let newSearchString = e.target.getAttribute("value");
-    let { searching } = this.state;
+    let { searching, searchString } = this.state;
     if (newSearchString !== '') {
       this.setState({
         searching: !searching,
         searchString: newSearchString,
       });
+    } else if (searching === true && searchString === '') {
+      axios.get('/reviews').then((response) => {
+        this.setState({
+          data: response.data[1],
+          numberOfPages: response.data[0],
+          searching: false,
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     }
-    //if searchString is empty, dont switch to searching but do 
-    //return data state to be the first pageof the paginated data
-    //from the db
   };
 
   searchDataForString() {
@@ -88,6 +96,7 @@ class App extends React.Component {
       }
     })
     .then((response) => {
+      console.log(response);
       this.setState({
         data: response.data[1],
         numberOfPages: response.data[0],
@@ -110,11 +119,15 @@ class App extends React.Component {
         <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
         <div>< ReviewList reviews={data}/></div>
         <div> 
-          < PageCarousel 
+          { data.length > 0 ?
+            < PageCarousel 
             page={pageNumber}
             numberOfPages={numberOfPages}
             changePage={changePage}
-          /></div>
+          />
+          : null
+          }
+        </div>
       </div>
     )
   }
