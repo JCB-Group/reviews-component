@@ -1,7 +1,9 @@
 {
   "name": "reviews-component",
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>client/src/setupTests.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>client/src/setupTests.js"
+    ],
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     }
@@ -52,6 +54,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "style-loader": "^0.23.1",
+    "styled-components": "^4.3.2",
     "underscore": "^1.9.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.5"
