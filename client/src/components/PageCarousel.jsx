@@ -22,20 +22,20 @@ class PageCarousel extends React.Component {
     let { page, numberOfPages, changePage } = this.props;
     if (numberOfPages >= 3 && page >= 2) {
       return (
-        <div>
+        <ul>
           { < LeftArrow value={page} changePage={changePage}/>}
           { < SmartDiv value={Number(page) - 1} changePage={changePage}/> }
           { < SmartDiv value={page} changePage={changePage}/> }
           { < SmartDiv value={Number(page) + 1} changePage={changePage}/> }
           { < RightArrow value={page} changePage={changePage}/> }
-        </div>
+        </ul>
       )
     } else {
       return (
-        <div>
+        <ul>
           { < SmartDiv value={page} changePage={changePage}/> }
           { < RightArrow value={page} changePage={changePage}/>}
-        </div>
+        </ul>
       )
     }
   }

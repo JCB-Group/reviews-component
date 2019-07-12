@@ -1,4 +1,5 @@
 import React from 'react';
+import { SearchButton } from './styleComponents.jsx';
 
 class Search extends React.Component {
   constructor(props) {
@@ -22,14 +23,16 @@ class Search extends React.Component {
     const { search } = this.props;
     const { value } = this.state;
     return (
-      <div>
-        <form onSubmit={search} value={value}>
-          <label>
-            <input type="text" value={value} onChange={this.onChangeHandler}/>
-          </label>
-          <input type="submit" value="Search Reviews"/>
-        </form>
-      </div>
+      < SearchButton>  
+        <div>
+          <form onSubmit={search} value={value}>
+            <label>
+              <input type="text" value={value} onChange={this.onChangeHandler}/>
+            </label>
+            <input type="submit" value="Search Reviews"/>
+          </form>
+        </div>
+      </SearchButton>  
     )
   }
 }

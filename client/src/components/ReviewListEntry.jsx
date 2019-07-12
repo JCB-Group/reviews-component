@@ -1,4 +1,5 @@
 import React from 'react';
+import { LineDiv } from './styleComponents.jsx';
 //once using actual data, conditionally map inside of render child comments
 //clarify if child comments render all children at once or similarly have a cutoff
 
@@ -8,6 +9,7 @@ const ReviewListEntry = (props) => {
     <div>
       <div>{review.userName}</div>
       <p>{review.textBody}</p>
+      < LineDiv />
     </div>
   )
 };

@@ -5,7 +5,7 @@ import Aggregates from './Aggregates.jsx';
 import SearchInfo from './SearchInfo.jsx';
 import PageCarousel from './PageCarousel.jsx';
 import styled from 'styled-components';
-import Font from './styleComponents.jsx';
+import { Shared, CarouselButton, LineDiv } from './styleComponents.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -114,14 +114,13 @@ class App extends React.Component {
     const { data, pageNumber, searching, numberOfPages } = this.state;
     const { changePage, toggleSearch } = this;
     return (
-      <Font> 
+      <Shared> 
         <div>
-          <div>{/* bar across top of page*/}</div>
           <div>< Search search={toggleSearch}/></div>
-          <div>{/* bar under search + review avg */}</div>
+          <div>< LineDiv/></div>
           <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
           <div>< ReviewList reviews={data}/></div>
-          <div> 
+          <div>
             { data.length > 0 ?
               < PageCarousel 
               page={pageNumber}
@@ -130,9 +129,9 @@ class App extends React.Component {
             />
             : null
             }
-          </div>
+          </div> 
         </div>
-      </Font> 
+      </Shared> 
     )
   }
 }
