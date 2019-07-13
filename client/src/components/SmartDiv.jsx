@@ -14,13 +14,20 @@ class SmartDiv extends React.Component {
 
   render() {
     let { value, changePage } = this.props;
-    return (
-      <CarouselButton 
-        value={value}
-        onClick={changePage}>
-        {value}
-      </CarouselButton>
-    )
+    if (value === '...') {
+      return (
+        <CarouselButton>...</CarouselButton>
+      )
+    }
+    else {
+      return (
+        <CarouselButton 
+          value={value}
+          onClick={changePage}>
+          {value}
+        </CarouselButton>
+      )
+    }
   }
 };
 
