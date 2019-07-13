@@ -5,8 +5,15 @@ import Aggregates from './Aggregates.jsx';
 import SearchInfo from './SearchInfo.jsx';
 import PageCarousel from './PageCarousel.jsx';
 import styled from 'styled-components';
-import { Shared, CarouselButton, LineDiv } from './styleComponents.jsx';
 import axios from 'axios';
+import { 
+  Shared,
+  FlexContainer,
+  LineDiv,
+  TotalReviewsHeader,
+  TotalReviewsStars,
+} from './styleComponents.jsx';
+// import { StarSVG } from './SVG.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +23,7 @@ class App extends React.Component {
       searching: false,
       searchString: '',
       data: [],
-      pageNumber: 0,
+      pageNumber: 5,
       numberOfPages: 0,
     };
     this.toggleSearch = this.toggleSearch.bind(this);
@@ -116,7 +123,18 @@ class App extends React.Component {
     return (
       <Shared> 
         <div>
-          <div>< Search search={toggleSearch}/></div>
+          <FlexContainer>
+            <TotalReviewsHeader>
+              120 Reviews
+            </TotalReviewsHeader>
+            <TotalReviewsStars/>
+            {/* <StarSVG/> */}
+            <div>
+              < Search 
+                search={toggleSearch}
+              />
+            </div>
+          </FlexContainer> 
           <div>< LineDiv/></div>
           <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
           <div>< ReviewList reviews={data}/></div>
