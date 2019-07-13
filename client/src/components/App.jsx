@@ -13,7 +13,7 @@ import {
   TotalReviewsHeader,
   TotalReviewsStars,
 } from './styleComponents.jsx';
-// import { StarSVG } from './SVG.jsx';
+import { StarSVG } from './SVG.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -128,7 +128,7 @@ class App extends React.Component {
               120 Reviews
             </TotalReviewsHeader>
             <TotalReviewsStars/>
-            {/* <StarSVG/> */}
+            <StarSVG/>
             <div>
               < Search 
                 search={toggleSearch}
