@@ -22,25 +22,39 @@ class PageCarousel extends React.Component {
   //render will call getNumberOfDivs and map across that area, passing in prop types and values as needed
   render() {
     let { page, numberOfPages, changePage } = this.props;
-    if (numberOfPages >= 3 && page >= 2) {
-      return (
-        <ul>
-          <LeftSvg />
-          { < LeftArrow value={page} changePage={changePage}/>}
-          { < SmartDiv value={Number(page) - 1} changePage={changePage}/> }
-          { < SmartDiv value={page} changePage={changePage}/> }
-          { < SmartDiv value={Number(page) + 1} changePage={changePage}/> }
-          { < RightArrow value={page} changePage={changePage}/> }
-        </ul>
-      )
-    } else {
-      return (
-        <ul>
-          { < SmartDiv value={page} changePage={changePage}/> }
-          { < RightArrow value={page} changePage={changePage}/>}
-        </ul>
-      )
-    }
+    let n = numberOfPages;
+  //   if (numberOfPages >= 3 && page >= 2) {
+  //     return (
+  //       <ul>
+  //         { < LeftArrow value={page} changePage={changePage}/>}
+  //         { < SmartDiv value={Number(page) - 1} changePage={changePage}/> }
+  //         { < SmartDiv value={page} changePage={changePage}/> }
+  //         { < SmartDiv value={Number(page) + 1} changePage={changePage}/> }
+  //         { < RightArrow value={page} changePage={changePage}/> }
+  //       </ul>
+  //     )
+  //   } else {
+  //     return (
+  //       <ul>
+  //         { < SmartDiv value={page} changePage={changePage}/> }
+  //         { < RightArrow value={page} changePage={changePage}/>}
+  //       </ul>
+  //     )
+  //   }
+  // }
+    return (
+      <div>
+        { page !== 0 ? <LeftArrow value={page}changePage={changePage}/> : null}
+        { page !== 0 ? <SmartDiv value={0} changePage={changePage}/> : null}
+        { page >= 4 && n >= 9 ? <SmartDiv value={'...'}/> : null}
+        { page >= 2 ? <SmartDiv value={Number(page) - 1} changePage={changePage}/>: null}
+        { page >= 2 ? <SmartDiv value={page} changePage={changePage}/>: null}
+        { page >= 2 ? <SmartDiv value={Number(page) + 1} changePage={changePage}/> : null}
+        { page <= n - 5 && n >= 9 ? <SmartDiv value={'...'}/> : null}
+        { page !== n - 1 ? <SmartDiv value ={n - 1} changePage={changePage}/> : null}
+        { page !== numberOfPages - 1 ? <RightArrow value={page} changePage={changePage}/> : null}
+      </div>
+    )
   }
 };
 
