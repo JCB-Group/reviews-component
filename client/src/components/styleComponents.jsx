@@ -17,11 +17,6 @@ const TotalReviewsStars = styled.div`
 `
 const SearchButton = styled.div`
 `
-const CarouselButton = styled.li`
-  color: rgb(0,132,137);
-  display: inline-block;
-  list-style-type: disc;
-`
 const LineDiv = styled.div`
   border-bottom: 1px solid black;
   border-bottom-color: #EBEBEB;
@@ -79,6 +74,39 @@ const EntryBody = styled.div`
   font-weight: 400;
   line-height: 1.375em;
 `
+const ButtonNavBar = styled.div`
+  display: flex;
+`
+const ButtonPadding = styled.span`
+  margin-left: 16px;
+  margin-right: 16px;
+  line-height: 32px;
+`
+const CarouselButton = styled.li`
+  display: inline-block;
+  list-style-type: disc;
+`
+const UnClickedButton = styled.div`
+  background-color: transparent;
+  color: rgb(0, 132, 137);
+  line-height: 32px;
+  text-align: center;
+`
+const ClickedButton = styled.div`
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  background-color: rgb(0, 132, 137);
+  color: rgb(255, 255, 255);
+  border-radius: 16px;
+`
+const VoidButton = styled.div`
+  background-color: transparent;
+  color: #484848;
+  line-height: 32px;
+  text-align: center;
+`
 export { 
   Shared,
   CarouselButton,
@@ -96,4 +124,9 @@ export {
   ReviewEntry,
   ReviewStars,
   ReviewEntryList,
+  ButtonNavBar,
+  ButtonPadding,
+  UnClickedButton,
+  ClickedButton,
+  VoidButton,
 };
