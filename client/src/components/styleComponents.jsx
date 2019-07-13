@@ -111,6 +111,19 @@ const VoidButton = styled.div`
   width: 22px;
   font-size: 12px;
 `
+const ArrowButton = styled.div`
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  background-color: transparent;
+  box-shadow: rgb(0, 132, 137) 0px 0px 0px 1px;
+  color: rgb(0, 132, 137);
+  border-radius: 16px;
+  border-color: rgb(0, 132, 137);
+  border-width: 1px;
+  justify-content: center;
+  text-align: center;
+`
 export { 
   Shared,
   CarouselButton,
@@ -133,4 +146,5 @@ export {
   UnClickedButton,
   ClickedButton,
   VoidButton,
+  ArrowButton,
 };

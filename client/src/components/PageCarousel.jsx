@@ -10,6 +10,7 @@ import {
   UnClickedButton,
   ClickedButton,
   VoidButton,
+  ArrowButton,
 } from './styleComponents.jsx';
 
 //this component needs to render between 6 and 9 divs in a carousel below reviews list, depending on review data
@@ -34,7 +35,9 @@ class PageCarousel extends React.Component {
       <ButtonNavBar>
         { page > 0 ?
           <ButtonPadding>
-            <LeftArrow value={page}changePage={changePage}/>
+            <ArrowButton>
+              <LeftArrow value={page}changePage={changePage}/>
+            </ArrowButton>
           </ButtonPadding> 
         : null}
           { page > 0 ? 
@@ -118,7 +121,9 @@ class PageCarousel extends React.Component {
              : null}
         { page < numberOfPages - 1 ?
         <ButtonPadding>
+          <ArrowButton>
            <RightArrow value={page} changePage={changePage}/>
+          </ArrowButton>
         </ButtonPadding>
         : null}
       </ButtonNavBar>
