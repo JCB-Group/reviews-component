@@ -17,11 +17,6 @@ const TotalReviewsStars = styled.div`
 `
 const SearchButton = styled.div`
 `
-const CarouselButton = styled.li`
-  color: rgb(0,132,137);
-  display: inline-block;
-  list-style-type: disc;
-`
 const LineDiv = styled.div`
   border-bottom: 1px solid black;
   border-bottom-color: #EBEBEB;
@@ -79,6 +74,56 @@ const EntryBody = styled.div`
   font-weight: 400;
   line-height: 1.375em;
 `
+const ButtonNavBar = styled.div`
+  display: flex;
+`
+const ButtonPadding = styled.span`
+  margin-left: 16px;
+  margin-right: 16px;
+  line-height: 32px;
+`
+const CarouselButton = styled.li`
+  display: inline-block;
+  list-style-type: disc;
+`
+const UnClickedButton = styled.div`
+  background-color: transparent;
+  color: rgb(0, 132, 137);
+  line-height: 32px;
+  text-align: center;
+`
+const ClickedButton = styled.div`
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  background-color: rgb(0, 132, 137);
+  color: rgb(255, 255, 255);
+  border-radius: 16px;
+  margin-left: 12px;
+  margin-right: 12px;
+`
+const VoidButton = styled.div`
+  background-color: transparent;
+  color: #484848;
+  line-height: 28px;
+  text-align: center;
+  width: 22px;
+  font-size: 12px;
+`
+const ArrowButton = styled.div`
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  background-color: transparent;
+  box-shadow: rgb(0, 132, 137) 0px 0px 0px 1px;
+  color: rgb(0, 132, 137);
+  border-radius: 16px;
+  border-color: rgb(0, 132, 137);
+  border-width: 1px;
+  justify-content: center;
+  text-align: center;
+`
 export { 
   Shared,
   CarouselButton,
@@ -96,4 +141,10 @@ export {
   ReviewEntry,
   ReviewStars,
   ReviewEntryList,
+  ButtonNavBar,
+  ButtonPadding,
+  UnClickedButton,
+  ClickedButton,
+  VoidButton,
+  ArrowButton,
 };

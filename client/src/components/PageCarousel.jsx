@@ -4,7 +4,14 @@ import LeftArrow from './LeftArrow.jsx';
 import RightArrow from './RightArrow.jsx';
 import { LeftSvg } from './SVG.jsx';
 import starRatings from 'react-star-ratings/build/star-ratings';
-
+import {
+  ButtonNavBar,
+  ButtonPadding,
+  UnClickedButton,
+  ClickedButton,
+  VoidButton,
+  ArrowButton,
+} from './styleComponents.jsx';
 
 //this component needs to render between 6 and 9 divs in a carousel below reviews list, depending on review data
 //at any given time, between 1 and 2 of those divs will be uninteractable "..." divs
@@ -24,41 +31,102 @@ class PageCarousel extends React.Component {
   render() {
     let { page, numberOfPages, changePage } = this.props;
     let n = numberOfPages;
-  //   if (numberOfPages >= 3 && page >= 2) {
-  //     return (
-  //       <ul>
-  //         { < LeftArrow value={page} changePage={changePage}/>}
-  //         { < SmartDiv value={Number(page) - 1} changePage={changePage}/> }
-  //         { < SmartDiv value={page} changePage={changePage}/> }
-  //         { < SmartDiv value={Number(page) + 1} changePage={changePage}/> }
-  //         { < RightArrow value={page} changePage={changePage}/> }
-  //       </ul>
-  //     )
-  //   } else {
-  //     return (
-  //       <ul>
-  //         { < SmartDiv value={page} changePage={changePage}/> }
-  //         { < RightArrow value={page} changePage={changePage}/>}
-  //       </ul>
-  //     )
-  //   }
-  // }
     return (
-      <div>
-        { page > 0 ? <LeftArrow value={page}changePage={changePage}/> : null}
-        { page !== 0 ? <SmartDiv value={0} changePage={changePage}/> : null}
-        { page >= 4 && n >= 9 ? <SmartDiv value={'...'}/> : null}
-        { page == n - 1 ? <SmartDiv value={Number(page) - 2} changePage={changePage}/> : null}
-        { page == 3 ? <SmartDiv value ={Number(page) - 2 } changePage={changePage}/> : null} 
-        { page >= 2 ? <SmartDiv value={Number(page) - 1} changePage={changePage}/>: null}
-        { page >= 1 ? <SmartDiv value={page} changePage={changePage}/>: null}
-        { page < n - 2 ? <SmartDiv value={Number(page) + 1} changePage={changePage}/> : null}
-        { page == 0 ? <SmartDiv value={Number(page) + 2} changePage={changePage}/> : null}
-        { page <= n - 5 && n >= 9 ? <SmartDiv value={'...'}/> : null}
-        { page == n -4 ? <SmartDiv value={Number(page) + 2} changePage={changePage}/> : null}
-        { page < n - 1 ? <SmartDiv value ={Number(n) - 1} changePage={changePage}/> : null}
-        { page < numberOfPages - 1 ? <RightArrow value={page} changePage={changePage}/> : null}
-      </div>
+      <ButtonNavBar>
+        { page > 0 ?
+          <ButtonPadding>
+            <ArrowButton>
+              <LeftArrow value={page}changePage={changePage}/>
+            </ArrowButton>
+          </ButtonPadding> 
+        : null}
+          { page > 0 ? 
+          <ButtonPadding>
+            <UnClickedButton>
+              <SmartDiv value={0} changePage={changePage}/>
+            </UnClickedButton>
+          </ButtonPadding>
+          : null}
+          { page >= 4 && n >= 9 ? 
+          <ButtonPadding>
+            <VoidButton>
+              <SmartDiv value={'...'}/> 
+            </VoidButton>
+          </ButtonPadding>
+          : null}
+          { page == n - 1 ? 
+          <ButtonPadding>
+            <UnClickedButton>
+              <SmartDiv value={Number(page) - 2} changePage={changePage}/>
+            </UnClickedButton>
+          </ButtonPadding>
+          : null}
+          { page == 3 ? 
+          <ButtonPadding>
+            <UnClickedButton>
+              <SmartDiv value ={Number(page) - 2 } changePage={changePage}/>
+            </UnClickedButton>
+          </ButtonPadding>
+          : null}
+          { page >= 2 ?
+        <ButtonPadding>
+          <UnClickedButton>
+             <SmartDiv value={Number(page) - 1} changePage={changePage}/>
+          </UnClickedButton>
+        </ButtonPadding>
+          : null}
+          { page >= 0 ? 
+            <ButtonPadding>
+              <UnClickedButton>
+                <ClickedButton>
+                  <SmartDiv value={page} changePage={changePage}/>
+                </ClickedButton>
+              </UnClickedButton>
+            </ButtonPadding>
+          : null}
+          { page < n - 2 ? 
+        <ButtonPadding>
+          <UnClickedButton>
+            <SmartDiv value={Number(page) + 1} changePage={changePage}/> 
+          </UnClickedButton>
+        </ButtonPadding>
+          : null}
+          { page == 0 ? 
+        <ButtonPadding>
+          <UnClickedButton>
+            <SmartDiv value={Number(page) + 2} changePage={changePage}/>
+          </UnClickedButton> 
+        </ButtonPadding>
+          : null}
+            { page <= n - 5 && n >= 9 ? 
+        <ButtonPadding>
+          <VoidButton>
+            <SmartDiv value={'...'}/> 
+          </VoidButton>
+        </ButtonPadding>
+            : null}
+          { page == n -4 ?
+        <ButtonPadding>
+          <UnClickedButton>
+             <SmartDiv value={Number(page) + 2} changePage={changePage}/>
+          </UnClickedButton>
+        </ButtonPadding>
+             : null}
+          { page < n - 1 ?
+        <ButtonPadding>
+          <UnClickedButton>
+             <SmartDiv value ={Number(n) - 1} changePage={changePage}/>
+          </UnClickedButton> 
+        </ButtonPadding>
+             : null}
+        { page < numberOfPages - 1 ?
+        <ButtonPadding>
+          <ArrowButton>
+           <RightArrow value={page} changePage={changePage}/>
+          </ArrowButton>
+        </ButtonPadding>
+        : null}
+      </ButtonNavBar>
     )
   }
 };
