@@ -24,7 +24,7 @@ const CarouselButton = styled.li`
 `
 const LineDiv = styled.div`
   border-bottom: 1px solid black;
-  color: #484848;
+  border-bottom-color: #EBEBEB;
   margin-top: 24px;
   margin-bottom: 24px;
 `
@@ -42,7 +42,7 @@ const ReviewEntry = styled.div`
   font-weight: 400;
   line-height: 1.375em;
   margin-bottom: 10px;
-  width: 50%;
+  width: 80%;
 `
 const ReviewEntryList = styled.div`
   font-size: 16px;
