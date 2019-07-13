@@ -14,6 +14,7 @@ import {
   TotalReviewsStars,
 } from './styleComponents.jsx';
 import { StarSVG } from './SVG.jsx';
+import StarRatings from 'react-star-ratings';
 
 class App extends React.Component {
   constructor(props) {
@@ -125,10 +126,15 @@ class App extends React.Component {
         <div>
           <FlexContainer>
             <TotalReviewsHeader>
-              120 Reviews
+              {7 * numberOfPages}
             </TotalReviewsHeader>
-            <TotalReviewsStars/>
-            <StarSVG/>
+            <StarRatings
+              numberOfStars={5}
+              rating={5}
+              starRatedColor={'rgb(0,132,137)'}
+              starDimension={'24px'}
+              starSpacing={'0px'}
+            />
             <div>
               < Search 
                 search={toggleSearch}
@@ -136,7 +142,9 @@ class App extends React.Component {
             </div>
           </FlexContainer> 
           <div>< LineDiv/></div>
-          <div>{searching ? < SearchInfo /> : < Aggregates />}</div>
+          <FlexContainer>
+            {searching ? < SearchInfo /> : < Aggregates />}
+          </FlexContainer>
           <div>< ReviewList reviews={data}/></div>
           <div>
             { data.length > 0 ?

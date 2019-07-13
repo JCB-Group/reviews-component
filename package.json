@@ -53,6 +53,7 @@
     "node": "^11.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-star-ratings": "^2.3.0",
     "style-loader": "^0.23.1",
     "styled-components": "^4.3.2",
     "underscore": "^1.9.1",

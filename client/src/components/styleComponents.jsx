@@ -34,6 +34,30 @@ const ReviewPhoto = styled.img`
   display: inline-block;
   border-radius: 50%;
 `
+const ReviewAggregateContainer = styled.div`
+  display: inline-block;
+`
+const ReviewEntry = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.375em;
+  margin-bottom: 10px;
+  width: 50%;
+`
+const ReviewEntryList = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.375em;
+  margin-bottom: 10px;
+  display: flex;
+`
+const ReviewStars = styled.div`
+  width: 50%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.375em;
+  margin-bottom: 10px;
+`
 const FlexContainer = styled.div`
   display: flex;
 `
@@ -68,4 +92,8 @@ export {
   EntryBody,
   TotalReviewsHeader,
   TotalReviewsStars,
+  ReviewAggregateContainer,
+  ReviewEntry,
+  ReviewStars,
+  ReviewEntryList,
 };
