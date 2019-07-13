@@ -37,7 +37,7 @@ class PageCarousel extends React.Component {
             <LeftArrow value={page}changePage={changePage}/>
           </ButtonPadding> 
         : null}
-          { page !== 0 ? 
+          { page > 0 ? 
           <ButtonPadding>
             <UnClickedButton>
               <SmartDiv value={0} changePage={changePage}/>
@@ -53,36 +53,46 @@ class PageCarousel extends React.Component {
           : null}
           { page == n - 1 ? 
           <ButtonPadding>
-            <SmartDiv value={Number(page) - 2} changePage={changePage}/>
+            <UnClickedButton>
+              <SmartDiv value={Number(page) - 2} changePage={changePage}/>
+            </UnClickedButton>
           </ButtonPadding>
           : null}
           { page == 3 ? 
           <ButtonPadding>
-            <SmartDiv value ={Number(page) - 2 } changePage={changePage}/> 
+            <UnClickedButton>
+              <SmartDiv value ={Number(page) - 2 } changePage={changePage}/>
+            </UnClickedButton>
           </ButtonPadding>
           : null}
+          { page >= 2 ?
         <ButtonPadding>
           <UnClickedButton>
-          { page >= 2 ? <SmartDiv value={Number(page) - 1} changePage={changePage}/>: null}
+             <SmartDiv value={Number(page) - 1} changePage={changePage}/>
           </UnClickedButton>
         </ButtonPadding>
-        <ButtonPadding>
-          <UnClickedButton>
-            <ClickedButton>
-              { page >= 1 ? <SmartDiv value={page} changePage={changePage}/>: null}
-            </ClickedButton>
-          </UnClickedButton>
-        </ButtonPadding>
+          : null}
+          { page >= 0 ? 
+            <ButtonPadding>
+              <UnClickedButton>
+                <ClickedButton>
+                  <SmartDiv value={page} changePage={changePage}/>
+                </ClickedButton>
+              </UnClickedButton>
+            </ButtonPadding>
+          : null}
           { page < n - 2 ? 
         <ButtonPadding>
           <UnClickedButton>
-          <SmartDiv value={Number(page) + 1} changePage={changePage}/> 
+            <SmartDiv value={Number(page) + 1} changePage={changePage}/> 
           </UnClickedButton>
         </ButtonPadding>
           : null}
           { page == 0 ? 
         <ButtonPadding>
-          <SmartDiv value={Number(page) + 2} changePage={changePage}/> 
+          <UnClickedButton>
+            <SmartDiv value={Number(page) + 2} changePage={changePage}/>
+          </UnClickedButton> 
         </ButtonPadding>
           : null}
             { page <= n - 5 && n >= 9 ? 
@@ -94,7 +104,9 @@ class PageCarousel extends React.Component {
             : null}
           { page == n -4 ?
         <ButtonPadding>
-             <SmartDiv value={Number(page) + 2} changePage={changePage}/> 
+          <UnClickedButton>
+             <SmartDiv value={Number(page) + 2} changePage={changePage}/>
+          </UnClickedButton>
         </ButtonPadding>
              : null}
           { page < n - 1 ?

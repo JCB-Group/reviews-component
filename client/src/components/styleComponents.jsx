@@ -100,12 +100,16 @@ const ClickedButton = styled.div`
   background-color: rgb(0, 132, 137);
   color: rgb(255, 255, 255);
   border-radius: 16px;
+  margin-left: 12px;
+  margin-right: 12px;
 `
 const VoidButton = styled.div`
   background-color: transparent;
   color: #484848;
-  line-height: 32px;
+  line-height: 28px;
   text-align: center;
+  width: 22px;
+  font-size: 12px;
 `
 export { 
   Shared,
