@@ -25,9 +25,8 @@ class Search extends React.Component {
         <div>
           <form onSubmit={search} value={value}>
             <label>
-              <input type="text" value={value} onChange={this.onChangeHandler}/>
+              <input placeholder={"Search Reviews"}type="text" value={value} onChange={this.onChangeHandler}/>
             </label>
-            <input type="submit" value="Search Reviews"/>
           </form>
         </div>
       </SearchButton>  

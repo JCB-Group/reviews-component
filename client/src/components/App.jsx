@@ -128,13 +128,15 @@ class App extends React.Component {
             <TotalReviewsHeader>
               {7 * numberOfPages}
             </TotalReviewsHeader>
-            <StarRatings
-              numberOfStars={5}
-              rating={5}
-              starRatedColor={'rgb(0,132,137)'}
-              starDimension={'24px'}
-              starSpacing={'0px'}
-            />
+            <TotalReviewsStars>
+              <StarRatings
+                numberOfStars={5}
+                rating={5}
+                starRatedColor={'rgb(0,132,137)'}
+                starDimension={'24px'}
+                starSpacing={'0px'}
+              />
+            </TotalReviewsStars>
             <div>
               < Search 
                 search={toggleSearch}
