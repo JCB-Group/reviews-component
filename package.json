@@ -14,8 +14,9 @@
   "scripts": {
     "build": "webpack",
     "test": "jest --coverage",
-    "start": "nodemon ./server/index.js",
-    "seed": "node ./db/seed.js"
+    "start": "node server/index.js",
+    "seed": "node db/seed.js",
+    "start:docker": "npm run seed ; npm start"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "babel-loader": "^8.0.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "cors": "^2.8.5",
     "css-loader": "^2.1.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",

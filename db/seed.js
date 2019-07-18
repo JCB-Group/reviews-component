@@ -2,6 +2,7 @@
 const db = require('./index.js');
 const Review = require('./reviews.js');
 const Faker = require('faker');
+const mongoose = require('mongoose');
 
 //evenly represent ratings 1-5 stars
 const getRandomRatingInt = () => {
@@ -34,6 +35,7 @@ Review.insertMany(fakeDocs, (err, docs) => {
     console.log(err);
   } else {
     console.log('woo! we added docs!');
+    mongoose.connection.close();
   }
 });
 

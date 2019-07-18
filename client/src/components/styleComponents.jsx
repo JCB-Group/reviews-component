@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Shared = styled.section`
   font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 5%;
+  margin-right: 30%;
   color: #484848;
 `
 const TotalReviewsHeader = styled.div`

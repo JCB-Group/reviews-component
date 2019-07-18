@@ -1,11 +1,14 @@
 const express = require('express');
 const models = require('../db/models.js');
 const app = express();
-const PORT = 3000;
+const path = require('path');
+const PORT = 3012;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+//may need to add path.resolve to give absolute path rather than relative
+app.use('/', express.static(path.resolve(__dirname, '/../client/dist')));
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.listen(PORT, () => {

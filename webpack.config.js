@@ -4,8 +4,9 @@ module.exports = {
   entry: './client/src/index.js',
   watch: true,
   output: {
-    filename: 'bundle.js',
+    filename: 'reviewsBundle.js',
     path: path.resolve(__dirname, './client/dist')
+    // path: '/users/JosefBerthoud/Desktop/FEC-2/reviews-proxy/dist/'
   },
   mode: 'development',
   module: {
