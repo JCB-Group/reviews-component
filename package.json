@@ -16,7 +16,7 @@
     "test": "jest --coverage",
     "start": "node server/index.js",
     "seed": "node db/seed.js",
-    "start:docker": "npm run seed ; npm start"
+    "start:docker": "npm run seed && npm start"
   },
   "repository": {
     "type": "git",

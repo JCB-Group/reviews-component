@@ -8,8 +8,6 @@ COPY . /src/app
 
 RUN npm install
 
-RUN npm run seed
-
 EXPOSE 3012
 
-CMD [ "npm", "start" ]
+CMD [ "sh", "-c", "npm run seed && npm start"]

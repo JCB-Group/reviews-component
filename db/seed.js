@@ -4,6 +4,8 @@ const Review = require('./reviews.js');
 const Faker = require('faker');
 const mongoose = require('mongoose');
 
+// const db = mongoose.connect('mongodb://172.17.0.3:27017/reviews');
+
 //evenly represent ratings 1-5 stars
 const getRandomRatingInt = () => {
   min = Math.ceil(1);
@@ -34,8 +36,9 @@ Review.insertMany(fakeDocs, (err, docs) => {
   if (err) {
     console.log(err);
   } else {
-    console.log('woo! we added docs!');
-    mongoose.connection.close();
+    console.log("first element of insertion array:", fakeDocs[0]);
+    db.mongoose.connection.close();
+    // mongoose.disconnect();
   }
 });
 
