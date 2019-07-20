@@ -4,12 +4,15 @@ const Review = require('./reviews.js');
 
 //called on initial page load
 //paginates data and sends back first page
-const find = (callback, page=0) => {
+const find = (callback, page=0, searching=false, query) => {
   Review.find({}, (err, docs) => {
     if (err) {
       callback(err);
-    } else {
+    } else if (searching === false) {
       callback(null, paginateData(docs, page));
+    } else if (searching === true) {
+      console.log(query);
+      search(query, callback, page);
     }
   });
 };
@@ -20,7 +23,7 @@ const find = (callback, page=0) => {
 //currently does not find all matching words
 //it finds one instance of query and breaks loop
 //in order to avoid pushing duplicate entries to return data
-const search = (query, callback) => {
+const search = (query, callback, page=0) => {
   Review.find({}, (err, docs) => {
     if (err) {
       callback(err);
@@ -35,8 +38,9 @@ const search = (query, callback) => {
           }
         }
       }
-      console.log(returnData);
-      callback(null, paginateData(returnData, 0));
+      // console.log(returnData);
+      // console.log(page);
+      callback(null, paginateData(returnData, page));
     }
   });
 };
@@ -45,8 +49,8 @@ const search = (query, callback) => {
 //can optionally take a second argument
 //as a request for a specific page
 const paginateData = (rawData, pageRequested) => {
-  console.log(pageRequested);
-  console.log(rawData);
+  // console.log(pageRequested);
+  // console.log(rawData);
   if (rawData.length === 0) {
     return [0, []];
   }

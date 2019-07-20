@@ -25,7 +25,7 @@ class App extends React.Component {
       searchString: '',
       lastSearchString: '',
       data: [],
-      searchData: [],
+      totalReviews: 0,
       pageNumber: 0,
       numberOfPages: 0,
     };
@@ -39,6 +39,7 @@ class App extends React.Component {
       this.setState({
         data: response.data[1],
         numberOfPages: response.data[0],
+        totalReviews: response.data[0] * 7,
       })
     })
     .catch((err) => {
@@ -56,11 +57,14 @@ class App extends React.Component {
   changePage(e) {
     console.log(e.target.getAttribute("value"));
     let pageNum = e.target.getAttribute("value");
+    let { searching, searchString } = this.state;
     axios({
       method: 'POST',
       url: '/reviews',
       data: {
-        pageNumber: pageNum
+        pageNumber: pageNum,
+        searching: searching,
+        searchString: searchString,
       }
     })
     .then((response) => {
@@ -91,6 +95,7 @@ class App extends React.Component {
           data: response.data[1],
           numberOfPages: response.data[0],
           searching: false,
+          pageNumber: 0,
         })
       })
       .catch((err) => {
@@ -121,7 +126,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { data, pageNumber, searching, numberOfPages, lastSearchString } = this.state;
+    const { data, pageNumber, searching, numberOfPages, lastSearchString, totalReviews } = this.state;
     const { changePage, toggleSearch } = this;
     return (
       <Shared> 
@@ -129,7 +134,7 @@ class App extends React.Component {
           <FlexContainer>
             <LeftSvg/>
             <TotalReviewsHeader>
-              {7 * numberOfPages}
+              {totalReviews}
             </TotalReviewsHeader>
             <TotalReviewsStars>
               <StarRatings
@@ -147,9 +152,11 @@ class App extends React.Component {
             </div>
           </FlexContainer> 
           <div>< LineDiv/></div>
-          <FlexContainer>
-            {searching ? < SearchInfo string={lastSearchString}/> : < Aggregates />}
-          </FlexContainer>
+          <div>
+            {searching 
+            ? < SearchInfo string={lastSearchString} num={numberOfPages * 7}/> 
+            : < Aggregates />}
+          </div>
           <div>< ReviewList reviews={data}/></div>
           <div>
             { data.length > 0 ?

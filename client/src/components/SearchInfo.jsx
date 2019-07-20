@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  LineDiv,
+  FlexContainer,
+} from './styleComponents.jsx';
 
 //need to pass down the total number of reviews with a matching string
 //and the search string
@@ -7,11 +11,11 @@ import React from 'react';
 const SearchInfo = (props) => {
   return (
       <div>
-        <div>
-          <span>n guests have mentioned "{props.string}"</span>
+        <FlexContainer>
+          <div>{props.num} guests have mentioned "{props.string}"</div>
           <span>   BUTTON</span>
-        </div>
-        <div>this div is going to be a bar across the screen</div>
+        </FlexContainer>
+        <LineDiv/>
       </div>
   )
 };

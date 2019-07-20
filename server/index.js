@@ -36,7 +36,7 @@ app.post('/reviews', (req, res) => {
       console.log('attempting to get new page');
       res.send(results);
     }
-  }, req.body.pageNumber);
+  }, req.body.pageNumber, req.body.searching, req.body.searchString);
 });
 
 app.post('/search', (req, res) => {
