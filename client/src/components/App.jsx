@@ -13,7 +13,7 @@ import {
   TotalReviewsHeader,
   TotalReviewsStars,
 } from './styleComponents.jsx';
-import { StarSVG } from './SVG.jsx';
+import { StarSVG, LeftSvg } from './SVG.jsx';
 import StarRatings from 'react-star-ratings';
 
 class App extends React.Component {
@@ -125,6 +125,7 @@ class App extends React.Component {
       <Shared> 
         <div>
           <FlexContainer>
+            <LeftSvg/>
             <TotalReviewsHeader>
               {7 * numberOfPages}
             </TotalReviewsHeader>

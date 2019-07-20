@@ -2,7 +2,7 @@ const express = require('express');
 const models = require('../db/models.js');
 const app = express();
 const path = require('path');
-const PORT = 3012;
+const PORT = 3004;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

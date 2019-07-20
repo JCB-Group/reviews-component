@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Shared = styled.section`
   font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
   margin-left: 5%;
+  margin-bottom: 5%;
   margin-right: 30%;
   color: #484848;
 `
@@ -29,6 +30,7 @@ const ReviewPhoto = styled.img`
   width: 48px;
   display: inline-block;
   border-radius: 50%;
+  cursor: pointer;
 `
 const ReviewAggregateContainer = styled.div`
   display: inline-block;
@@ -83,7 +85,19 @@ const ButtonPadding = styled.span`
   margin-right: 16px;
   line-height: 32px;
 `
+const ButtonPaddingVoid = styled.span`
+  margin-left: 10px;
+  margin-right: 10px;
+  line-height: 32px;
+`
 const CarouselButton = styled.li`
+  display: inline-block;
+  list-style-type: disc;
+  &:hover {
+    text-decoration: underline;
+  }
+`
+const CarouselButtonVoid = styled.li`
   display: inline-block;
   list-style-type: disc;
 `
@@ -92,6 +106,8 @@ const UnClickedButton = styled.div`
   color: rgb(0, 132, 137);
   line-height: 32px;
   text-align: center;
+  cursor: pointer;
+  width: 32px;
 `
 const ClickedButton = styled.div`
   width: 32px;
@@ -101,8 +117,6 @@ const ClickedButton = styled.div`
   background-color: rgb(0, 132, 137);
   color: rgb(255, 255, 255);
   border-radius: 16px;
-  margin-left: 12px;
-  margin-right: 12px;
 `
 const VoidButton = styled.div`
   background-color: transparent;
@@ -110,6 +124,7 @@ const VoidButton = styled.div`
   line-height: 28px;
   text-align: center;
   width: 22px;
+  height: 32px;
   font-size: 12px;
 `
 const ArrowButton = styled.div`
@@ -124,7 +139,15 @@ const ArrowButton = styled.div`
   border-width: 1px;
   justify-content: center;
   text-align: center;
+  cursor: pointer;
 `
+const SVGWrapper = styled.div`
+  height: 0.75em;
+  width: 0.75em;
+  fill: currentcolor;
+  display: inline-block;
+`
+
 export { 
   Shared,
   CarouselButton,
@@ -144,8 +167,11 @@ export {
   ReviewEntryList,
   ButtonNavBar,
   ButtonPadding,
+  ButtonPaddingVoid,
   UnClickedButton,
   ClickedButton,
   VoidButton,
   ArrowButton,
+  SVGWrapper,
+  CarouselButtonVoid,
 };

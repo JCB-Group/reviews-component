@@ -1,9 +1,13 @@
 import React from 'react';
+import { LeftSvg } from './SVG.jsx';
+import { SVGWrapper } from './styleComponents.jsx';
 
 const LeftArrow = (props) => {
   let { value, changePage } = props;
   return (
-    <div value={Number(value) - 1} onClick={changePage}>{"<"}</div>
+    <SVGWrapper value={Number(value) - 1} onClick={changePage}>
+      <LeftSvg/>
+    </SVGWrapper>
   )
 };
 

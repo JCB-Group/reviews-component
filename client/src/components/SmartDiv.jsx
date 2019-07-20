@@ -1,5 +1,9 @@
 import React from 'react';
-import { Font, CarouselButton } from './styleComponents.jsx';
+import { 
+  Font,
+  CarouselButton,
+  CarouselButtonVoid
+ } from './styleComponents.jsx';
 
 class SmartDiv extends React.Component {
   constructor(props) {
@@ -16,7 +20,7 @@ class SmartDiv extends React.Component {
     let { value, changePage } = this.props;
     if (value === '...') {
       return (
-        <CarouselButton>...</CarouselButton>
+        <CarouselButtonVoid>...</CarouselButtonVoid>
       )
     }
     else {

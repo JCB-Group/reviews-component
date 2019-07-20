@@ -11,6 +11,7 @@ import {
   ClickedButton,
   VoidButton,
   ArrowButton,
+  ButtonPaddingVoid
 } from './styleComponents.jsx';
 
 
@@ -41,11 +42,11 @@ class PageCarousel extends React.Component {
           </ButtonPadding>
           : null}
           { page >= 4 && n >= 9 ? 
-          <ButtonPadding>
+          <ButtonPaddingVoid>
             <VoidButton>
               <SmartDiv value={'...'}/> 
             </VoidButton>
-          </ButtonPadding>
+          </ButtonPaddingVoid>
           : null}
           { page == n - 1 ? 
           <ButtonPadding>
@@ -92,11 +93,11 @@ class PageCarousel extends React.Component {
         </ButtonPadding>
           : null}
             { page <= n - 5 && n >= 9 ? 
-        <ButtonPadding>
+        <ButtonPaddingVoid>
           <VoidButton>
             <SmartDiv value={'...'}/> 
           </VoidButton>
-        </ButtonPadding>
+        </ButtonPaddingVoid>
             : null}
           { page == n -4 ?
         <ButtonPadding>
