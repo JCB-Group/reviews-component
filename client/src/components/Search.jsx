@@ -25,7 +25,13 @@ class Search extends React.Component {
         <div>
           <form onSubmit={search} value={value}>
             <label>
+            <input placeholder={"Search Reviews"}type="text" value={value} onChange={this.onChangeHandler}/>
+              {/* { this.props.value === '' ?
               <input placeholder={"Search Reviews"}type="text" value={value} onChange={this.onChangeHandler}/>
+              : <input placeholder={"Search Reviews"}type="text" value={
+                (this.props.value) === null ? '' : this.props.value
+              } onChange={this.onChangeHandler}/>
+              } */}
             </label>
           </form>
         </div>
