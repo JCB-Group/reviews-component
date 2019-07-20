@@ -28,7 +28,7 @@ class SmartDiv extends React.Component {
         <CarouselButton 
           value={value}
           onClick={changePage}>
-          {value}
+          {Number(value) + 1}
         </CarouselButton>
       )
     }

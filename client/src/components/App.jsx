@@ -23,8 +23,10 @@ class App extends React.Component {
     this.state = {
       searching: false,
       searchString: '',
+      lastSearchString: '',
       data: [],
-      pageNumber: 5,
+      searchData: [],
+      pageNumber: 0,
       numberOfPages: 0,
     };
     this.toggleSearch = this.toggleSearch.bind(this);
@@ -76,13 +78,14 @@ class App extends React.Component {
   toggleSearch(e) {
     e.preventDefault();
     let newSearchString = e.target.getAttribute("value");
-    let { searching, searchString } = this.state;
+    let { searching, searchString, lastSearchString } = this.state;
     if (newSearchString !== '') {
       this.setState({
         searching: !searching,
         searchString: newSearchString,
+        lastSearchString: newSearchString,
       });
-    } else if (searching === true && searchString === '') {
+    } else if (searching === true) {
       axios.get('/reviews').then((response) => {
         this.setState({
           data: response.data[1],
@@ -106,11 +109,10 @@ class App extends React.Component {
       }
     })
     .then((response) => {
-      console.log(response);
       this.setState({
         data: response.data[1],
         numberOfPages: response.data[0],
-        searchString: ''
+        searchString: '',
       })
     })
     .catch((err) => {
@@ -119,7 +121,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { data, pageNumber, searching, numberOfPages } = this.state;
+    const { data, pageNumber, searching, numberOfPages, lastSearchString } = this.state;
     const { changePage, toggleSearch } = this;
     return (
       <Shared> 
@@ -146,7 +148,7 @@ class App extends React.Component {
           </FlexContainer> 
           <div>< LineDiv/></div>
           <FlexContainer>
-            {searching ? < SearchInfo /> : < Aggregates />}
+            {searching ? < SearchInfo string={lastSearchString}/> : < Aggregates />}
           </FlexContainer>
           <div>< ReviewList reviews={data}/></div>
           <div>
