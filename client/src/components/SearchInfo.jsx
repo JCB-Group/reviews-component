@@ -13,7 +13,7 @@ const SearchInfo = (props) => {
       <div>
         <FlexContainer>
           <div>{props.num} guests have mentioned "{props.string}"</div>
-          <span>   BUTTON</span>
+          <span onClick={props.search}>   BUTTON</span>
         </FlexContainer>
         <LineDiv/>
       </div>

@@ -17,6 +17,17 @@ const find = (callback, page=0, searching=false, query) => {
   });
 };
 
+const findAll = (callback, page=0) => {
+  Review.find({}, (err, docs) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, paginateData(docs, page));
+    }
+  });
+};
+
+
 //called when the user searches
 //builds array of matching reviews
 //paginates those reviews and returns page one
@@ -72,3 +83,4 @@ const paginateData = (rawData, pageRequested) => {
 
 module.exports.find = find;
 module.exports.search = search;
+module.exports.findAll = findAll;

@@ -48,39 +48,70 @@ class App extends React.Component {
   };
 
   componentDidUpdate() {
-    let { searchString, searching } = this.state;
+    let { searchString, searching, lastSearchString } = this.state;
     if (searchString !== '' && searching === true) {
+      this.searchDataForString();
+      //searchdataforstring is resetting searchstring state to be empty
+      //in order to prevent an infinite loop
+      //i need to retain my searchstring to if i changepage
+      //i can load the correct set of 7 reviews
+    } else if (searchString !== '' && searching === true && lastSearchString !== '') {
       this.searchDataForString();
     }
   };
   
   changePage(e) {
     console.log(e.target.getAttribute("value"));
+    console.log(this.state.lastSearchString);
     let pageNum = e.target.getAttribute("value");
-    let { searching, searchString } = this.state;
-    axios({
-      method: 'POST',
-      url: '/reviews',
-      data: {
-        pageNumber: pageNum,
-        searching: searching,
-        searchString: searchString,
-      }
-    })
-    .then((response) => {
-      this.setState({
-        data: response.data[1],
-        numberOfPages: response.data[0],
-        pageNumber: pageNum
+    let { searching, searchString, lastSearchString } = this.state;
+    if (searching === false) {
+      axios({
+        method: 'POST',
+        url: '/reviews',
+        data: {
+          pageNumber: pageNum,
+          searching: searching,
+          searchString: searchString,
+        }
       })
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+      .then((response) => {
+        this.setState({
+          data: response.data[1],
+          numberOfPages: response.data[0],
+          pageNumber: pageNum,
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    } else if (searching === true) {
+      axios({
+        method: 'POST',
+        url: '/reviews',
+        data: {
+          pageNumber: pageNum,
+          searching: searching,
+          searchString: lastSearchString,
+        }
+      })
+      .then((response) => {
+        this.setState({
+          data: response.data[1],
+          numberOfPages: response.data[0],
+          pageNumber: pageNum,
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    } 
   };
   
   toggleSearch(e) {
     e.preventDefault();
+    // console.log(this.state.searchString);
+    // console.log(this.state.lastSearchString);
     let newSearchString = e.target.getAttribute("value");
     let { searching, searchString, lastSearchString } = this.state;
     if (newSearchString !== '') {
@@ -89,7 +120,7 @@ class App extends React.Component {
         searchString: newSearchString,
         lastSearchString: newSearchString,
       });
-    } else if (searching === true) {
+    } else if (searching === true && searchString === '') {
       axios.get('/reviews').then((response) => {
         this.setState({
           data: response.data[1],
@@ -101,8 +132,23 @@ class App extends React.Component {
       .catch((err) => {
         console.log(err);
       })
-    }``
+    }
   };
+
+  // clearSearch(e) {
+  //   axios.get('/reviews').then((response) => {
+  //     this.setState({
+  //       data: response.data[1],
+  //       numberOfPages: response.data[0],
+  //       searching: false,
+  //       pageNumber: 0,
+  //       searchString: '',
+  //     })
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   })
+  // }
 
   searchDataForString() {
     let { searchString } = this.state;
@@ -111,6 +157,27 @@ class App extends React.Component {
       url: '/search',
       data: {
         searchString: searchString
+      }
+    })
+    .then((response) => {
+      this.setState({
+        data: response.data[1],
+        numberOfPages: response.data[0],
+        searchString: '',
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  };
+
+  searchDataForLast() {
+    let { lastSearchString } = this.state;
+    axios({
+      method: 'POST',
+      url: '/search',
+      data: {
+        searchString: lastSearchString
       }
     })
     .then((response) => {
@@ -148,13 +215,14 @@ class App extends React.Component {
             <div>
               < Search 
                 search={toggleSearch}
+                // value={this.state.searchString}
               />
             </div>
           </FlexContainer> 
           <div>< LineDiv/></div>
           <div>
             {searching 
-            ? < SearchInfo string={lastSearchString} num={numberOfPages * 7}/> 
+            ? < SearchInfo string={lastSearchString} num={numberOfPages * 7} search={toggleSearch}/> 
             : < Aggregates />}
           </div>
           <div>< ReviewList reviews={data}/></div>
