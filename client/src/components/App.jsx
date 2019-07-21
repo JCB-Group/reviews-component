@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from './Search.jsx';
+import ReviewTotal from './ReviewTotal.jsx';
 import ReviewList from './ReviewList.jsx';
 import Aggregates from './Aggregates.jsx';
 import SearchInfo from './SearchInfo.jsx';
@@ -28,6 +29,9 @@ class App extends React.Component {
       totalReviews: 0,
       pageNumber: 0,
       numberOfPages: 0,
+      reviewAverages: {
+        total: 5,
+      },
     };
     this.toggleSearch = this.toggleSearch.bind(this);
     this.searchDataForString = this.searchDataForString.bind(this);
@@ -36,10 +40,12 @@ class App extends React.Component {
   
   componentDidMount() {
     axios.get('/reviews').then((response) => {
+      console.log(response.data);
       this.setState({
-        data: response.data[1],
-        numberOfPages: response.data[0],
-        totalReviews: response.data[0] * 7,
+        data: response.data[0][1],
+        numberOfPages: response.data[0][0],
+        totalReviews: response.data[0][0] * 7,
+        reviewAverages: response.data[1],
       })
     })
     .catch((err) => {
@@ -51,10 +57,6 @@ class App extends React.Component {
     let { searchString, searching, lastSearchString } = this.state;
     if (searchString !== '' && searching === true) {
       this.searchDataForString();
-      //searchdataforstring is resetting searchstring state to be empty
-      //in order to prevent an infinite loop
-      //i need to retain my searchstring to if i changepage
-      //i can load the correct set of 7 reviews
     } else if (searchString !== '' && searching === true && lastSearchString !== '') {
       this.searchDataForString();
     }
@@ -77,8 +79,8 @@ class App extends React.Component {
       })
       .then((response) => {
         this.setState({
-          data: response.data[1],
-          numberOfPages: response.data[0],
+          data: response.data[0][1],
+          numberOfPages: response.data[0][0],
           pageNumber: pageNum,
         })
       })
@@ -122,9 +124,10 @@ class App extends React.Component {
       });
     } else if (searching === true && searchString === '') {
       axios.get('/reviews').then((response) => {
+        console.log(response.data[0][1])
         this.setState({
-          data: response.data[1],
-          numberOfPages: response.data[0],
+          data: response.data[0][1],
+          numberOfPages: response.data[0][0],
           searching: false,
           pageNumber: 0,
         })
@@ -134,21 +137,6 @@ class App extends React.Component {
       })
     }
   };
-
-  // clearSearch(e) {
-  //   axios.get('/reviews').then((response) => {
-  //     this.setState({
-  //       data: response.data[1],
-  //       numberOfPages: response.data[0],
-  //       searching: false,
-  //       pageNumber: 0,
-  //       searchString: '',
-  //     })
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   })
-  // }
 
   searchDataForString() {
     let { searchString } = this.state;
@@ -171,29 +159,29 @@ class App extends React.Component {
     })
   };
 
-  searchDataForLast() {
-    let { lastSearchString } = this.state;
-    axios({
-      method: 'POST',
-      url: '/search',
-      data: {
-        searchString: lastSearchString
-      }
-    })
-    .then((response) => {
-      this.setState({
-        data: response.data[1],
-        numberOfPages: response.data[0],
-        searchString: '',
-      })
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  };
+  // searchDataForLast() {
+  //   let { lastSearchString } = this.state;
+  //   axios({
+  //     method: 'POST',
+  //     url: '/search',
+  //     data: {
+  //       searchString: lastSearchString
+  //     }
+  //   })
+  //   .then((response) => {
+  //     this.setState({
+  //       data: response.data[1],
+  //       numberOfPages: response.data[0],
+  //       searchString: '',
+  //     })
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   })
+  // };
 
   render() {
-    const { data, pageNumber, searching, numberOfPages, lastSearchString, totalReviews } = this.state;
+    const { data, pageNumber, searching, numberOfPages, lastSearchString, totalReviews, searchString, reviewAverages } = this.state;
     const { changePage, toggleSearch } = this;
     return (
       <Shared> 
@@ -204,13 +192,7 @@ class App extends React.Component {
               {totalReviews}
             </TotalReviewsHeader>
             <TotalReviewsStars>
-              <StarRatings
-                numberOfStars={5}
-                rating={5}
-                starRatedColor={'rgb(0,132,137)'}
-                starDimension={'24px'}
-                starSpacing={'0px'}
-              />
+              <ReviewTotal ratings={reviewAverages}/>
             </TotalReviewsStars>
             <div>
               < Search 
@@ -223,7 +205,7 @@ class App extends React.Component {
           <div>
             {searching 
             ? < SearchInfo string={lastSearchString} num={numberOfPages * 7} search={toggleSearch}/> 
-            : < Aggregates />}
+            : < Aggregates ratings={reviewAverages}/>}
           </div>
           <div>< ReviewList reviews={data}/></div>
           <div>

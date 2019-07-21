@@ -8,14 +8,14 @@ import {
   FlexContainer,
 } from './styleComponents.jsx';
 
-const Aggregates = () => (
+const Aggregates = ({ratings}) => (
   <FlexContainer>
     <React.Fragment>
       <ReviewStars>
-        < AggregatesOne />
+        < AggregatesOne ratings={ratings}/>
       </ReviewStars>
       <ReviewStars>
-        < AggregatesTwo />
+        < AggregatesTwo ratings={ratings}/>
       </ReviewStars>
     </React.Fragment>
   </FlexContainer>
