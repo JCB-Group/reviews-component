@@ -9,7 +9,7 @@ const find = (callback, page=0, searching=false, query) => {
     if (err) {
       callback(err);
     } else if (searching === false) {
-      callback(null, paginateData(docs, page));
+      callback(null, [paginateData(docs, page), calculateReviews(docs)]);
     } else if (searching === true) {
       console.log(query);
       search(query, callback, page);
@@ -27,6 +27,33 @@ const findAll = (callback, page=0) => {
   });
 };
 
+const calculateReviews = (docs) => {
+  let numDocs = docs.length;
+  let accuracy = 0;
+  let communication = 0;
+  let cleanliness = 0;
+  let location = 0;
+  let checkIn = 0;
+  let value = 0;
+  let averages = {};
+  for (let i = 0; i < docs.length; i++) {
+    let { ratings } = docs[i];
+    accuracy += ratings.accuracy;
+    communication += ratings.communication;
+    cleanliness += ratings.cleanliness;
+    location += ratings.location;
+    checkIn += ratings.checkIn;
+    value += ratings.value;
+  }
+  averages.accuracy = accuracy / numDocs;
+  averages.communication = communication / numDocs;
+  averages.cleanliness = cleanliness / numDocs;
+  averages.location = location / numDocs;
+  averages.checkIn = checkIn / numDocs;
+  averages.value = value / numDocs;
+  averages.total = (accuracy + communication + cleanliness + location + checkIn + value) / (numDocs * 6);
+  return averages;
+};
 
 //called when the user searches
 //builds array of matching reviews

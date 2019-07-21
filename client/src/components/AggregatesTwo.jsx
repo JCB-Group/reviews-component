@@ -7,7 +7,7 @@ import {
   ReviewStars,
 } from './styleComponents.jsx';
 
-const AggregatesTwo = () => (
+const AggregatesTwo = ({ratings}) => (
   <div>
     <div>
       <ReviewEntryList>
@@ -15,8 +15,9 @@ const AggregatesTwo = () => (
         <ReviewStars>
           <StarRatings
             numberOfStars={5}
-            rating={5}
+            rating={ratings.location}
             starRatedColor={'rgb(0,132,137)'}
+            starEmptyColor={'rgb(203, 211, 227)'}
             starDimension={'20px'}
             starSpacing={'0px'}
           />
@@ -27,8 +28,9 @@ const AggregatesTwo = () => (
         <ReviewStars>
           <StarRatings
             numberOfStars={5}
-            rating={5}
+            rating={ratings.checkIn}
             starRatedColor={'rgb(0,132,137)'}
+            starEmptyColor={'rgb(203, 211, 227)'}
             starDimension={'20px'}
             starSpacing={'0px'}
           />
@@ -39,8 +41,9 @@ const AggregatesTwo = () => (
         <ReviewStars>
           <StarRatings
             numberOfStars={5}
-            rating={5}
+            rating={ratings.value}
             starRatedColor={'rgb(0,132,137)'}
+            starEmptyColor={'rgb(203, 211, 227)'}
             starDimension={'20px'}
             starSpacing={'0px'}
           />
