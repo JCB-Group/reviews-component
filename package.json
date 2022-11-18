@@ -60,6 +60,6 @@
     "styled-components": "^4.3.2",
     "underscore": "^1.9.1",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.12"
   }
 }
